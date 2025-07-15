@@ -1,0 +1,96 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs';
+import dedent from 'ts-dedent';
+import StoryConfig from '../../../.storybook/story-config.ts';
+import RichTreeView from './RichTreeView.tsx';
+
+export const meta = {
+  component: RichTreeView,
+  title: StoryConfig.RichTreeView.hierarchy,
+};
+
+<Meta title={meta.title} component={meta.component} />
+
+export const Template = args => (
+  <RichTreeView
+    items={ [
+      {
+        id: 'productivity',
+        label: 'Productivity Tools',
+        children: [
+          { id: 'docs-editor', label: 'Docs Editor' },
+          { id: 'task-manager', label: 'Task Manager Pro' },
+          { id: 'calendar-suite', label: 'Calendar Suite' },
+        ],
+      },
+      {
+        id: 'design',
+        label: 'Design Systems',
+        children: [
+          { id: 'ui-kit-basic', label: 'UI Kit Basic' },
+          { id: 'ui-kit-pro', label: 'UI Kit Pro' },
+        ],
+      },
+      {
+        id: 'analytics',
+        label: 'Analytics',
+        children: [
+          { id: 'realtime-dashboard', label: 'Real-Time Dashboard' }
+        ],
+      },
+      {
+        id: 'components',
+        label: 'UI Components',
+        children: [
+          { id: 'tree-view', label: 'Tree View Library' }
+        ],
+      },
+    ]}
+  />
+);
+
+# RichTreeView
+
+- [Overview](#overview)
+- [Props](#props)
+- [Usage](#usage)
+
+## Overview
+
+Use the RichTreeView component to display hierarchical data in a tree structure with rich features like selection, expansion, and custom rendering.
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      label: 'RichTreeView',
+      disabled: false,
+      disableFuture: false,
+      disableHighlightToday: false,
+      disablePast: false,
+      displayWeekNumber: false,
+      loading: false
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Overview" />
+
+## Usage
+
+<Source
+  language="jsx"
+  dark
+  format
+  code={dedent`
+import RichTreeView from '@oxygen-ui/react/RichTreeView';\n
+function Demo {
+  return (
+    <RichTreeView />
+  );
+}
+`}
+/>

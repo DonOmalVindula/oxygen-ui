@@ -106,6 +106,7 @@ export type Stories =
   | 'Popover'
   | 'Radio'
   | 'RadioGroup'
+  | 'RichTreeView'
   | 'Select'
   | 'SignIn'
   | 'Skeleton'
@@ -378,6 +379,9 @@ const StoryConfig: StorybookConfig = {
   },
   RadioGroup: {
     hierarchy: `${StorybookCategories.Inputs}/Radio Group`,
+  },
+  RichTreeView: {
+    hierarchy: `${StorybookCategories.DataDisplay}/Rich Tree View`,
   },
   Select: {
     hierarchy: `${StorybookCategories.Inputs}/Select`,
