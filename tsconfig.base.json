@@ -1,12 +1,12 @@
 {
-  "root": true,
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@oxygen-ui/primitives": ["packages/primitives/src"],
-      "@oxygen-ui/logger": ["packages/logger/src/index.ts"],
-      "@oxygen-ui/react": ["packages/react/src/index.ts"],
-      "@oxygen-ui/react-icons": ["packages/react-icons/src/index.ts"]
-    }
+    "declaration": false,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2015", "dom"],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
   }
 }

@@ -1,66 +1,106 @@
-<h1 align="center" style="color: #343a40;margin: 20px 0">
-  <img src="https://user-images.githubusercontent.com/25959096/207556831-df3104cd-f5bb-4e74-9cbe-226ebab20bac.svg#gh-light-mode-only" alt="WSO2 Oxygen UI light mode logo">
-    <img src="https://user-images.githubusercontent.com/25959096/207556846-0e513a7c-2e59-413a-84ef-d11f1de81247.svg#gh-dark-mode-only" alt="WSO2 Oxygen UI dark mode logo">
-</h1>
+# WSO2 Oxygen-UI
 
-<p align="center" style="font-size: 1.2rem;">The
-<span style="color: #47EBD8">Design System</span>
-powering <a href="https://wso2.com">WSO2</a>'s core products.</p>
+**WSO2 Oxygen-UI** is the official design system and React component library for WSO2 products, built on top of [Material-UI v7](https://mui.com/material-ui/). It provides a consistent, modern, and accessible user experience across all WSO2 applications, enabling rapid development and seamless integration with the latest frontend technologies.
 
-<div align="center">
-  <a href="https://github.com/wso2/oxygen-ui/actions/workflows/release.yml"><img src="https://github.com/wso2/oxygen-ui/actions/workflows/release.yml/badge.svg" alt="🚀 Release"></a>
-  <a href="https://github.com/wso2/oxygen-ui/actions/workflows/deploy-gh-pages.yaml"><img src="https://github.com/wso2/oxygen-ui/actions/workflows/deploy-gh-pages.yaml/badge.svg" alt="☄️ Deploy Documentation"></a>
-  <a href="https://github.com/wso2/oxygen-ui/actions/workflows/test-runner.yml"><img src="https://img.shields.io/github/actions/workflow/status/wso2/oxygen-ui/test-runner.yml?label=%F0%9F%8C%B3%20Unit%20Tests" alt="🌳 Unit Tests"></a>
-  <a href="https://github.com/wso2/oxygen-ui/actions/workflows/builder.yml"><img src="https://img.shields.io/github/actions/workflow/status/wso2/oxygen-ui/builder.yml?color=red&label=%F0%9F%A7%B1%20Builder" alt="🧱 Builder"></a>
-  <a href="https://stackoverflow.com/questions/tagged/wso2is"><img src="https://img.shields.io/badge/Ask%20for%20help%20on-Stackoverflow-orange" alt="Stackoverflow"></a>
-  <a href="https://discord.gg/wso2"><img src="https://img.shields.io/badge/Join%20us%20on-Discord-%23e01563.svg" alt="Discord"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a>
-</div>
+Oxygen-UI delivers:
 
-<br>
+- A comprehensive set of ready-to-use UI components, themed for WSO2 brand and product needs
+- Full compatibility with Material-UI 7 and its ecosystem
+- Support for custom WSO2 components and design patterns
+- Easy integration with Vite, Nx, and modern React workflows
 
-Oxygen UI is the underlying design system that powers WSO2's core products like Asgardeo, Choreo, WSO2 Identity Server, etc.
+# Prerequisites
 
-This repository contains the source code of the key components that works together for building resilient UIs.
+Before you begin, ensure you have the following installed:
 
-## Packages
+- [Node.js](https://nodejs.org/) (v25 or newer recommended)
+- [pnpm](https://pnpm.io/) (v10 or newer recommended)
+- [Vite](https://vitejs.dev/) (for frontend projects)
+- [Nx](https://nx.dev/) (optional, for monorepo/workspace management)
 
-| Package | Description | Version |
-| --- | --- | --- |
-| [`@oxygen-ui/primitives`](./packages/primitives) | Low level building blocks of Oxygen UI (e.g. icons, fonts)  | ![npm](https://img.shields.io/npm/v/@oxygen-ui/primitives?color=blue) |
-| [`@oxygen-ui/react`](./packages/react) | The React implementation of Oxygen UI. | ![npm](https://img.shields.io/npm/v/@oxygen-ui/react?color=green) |
-| [`@oxygen-ui/react-icons`](./packages/react-icons) | React components for Oxygen UI icons. | ![npm](https://img.shields.io/npm/v/@oxygen-ui/react-icons?color=yellow) |
-| [`@oxygen-ui/logger`](./packages/logger) | Logger for the Oxygen UI packages | ![npm](https://img.shields.io/npm/v/@oxygen-ui/logger?color=orange) |
+# Usage Example
 
-## Examples
+Simply import any Material-UI or Oxygen-UI custom component like:
 
-* [💅 Multi Brand Identity Demo](https://wso2.github.io/oxygen-ui/examples/multi-brand-identity/)
+```js
+import Button from '@wso2/oxygen-ui/Button'
+```
 
-    Sample app to showcase Oxygen Design System's multi-branding capabilities.
+Refer to [Material-UI documentation](https://mui.com/material-ui/all-components/) for component usage details.
 
-    ✨ Features
-    
-    * Ability to switch between different WSO2 brand identities. i.e. Asgardeo, Choreo, etc.
-    * Ability to integrate with [Asgardeo Branding](https://wso2.com/asgardeo/docs/guides/branding/configure-ui-branding/) feature.
+# Oxygen UI Vite Integration
 
-    Click [here →](./examples/multi-brand-identity/) for the source code 🧑‍💻
+## Setup
 
-## Documentation
+Install dependencies:
 
-For more information on how to use Oxygen UI, check out the [documentation](https://wso2.github.io/oxygen-ui) website.
+```sh
+pnpm add -D @wso2/oxygen-ui @wso2/vite-plugin-oxygen-ui @mui/material @emotion/styled @emotion/react
+```
 
-## Changelog
+## Vite Project Configuration
 
-You can find the latest changes and updates for Oxygen-UI in the [Changelog](./CHANGELOG.md) section. This includes information on new features, bug fixes, and improvements made to the project with each release.
+### tsconfig.json
 
-💡 It's recommended to review the changelog before upgrading to a new version of Oxygen-UI.
+Add the following to your `tsconfig.json`:
 
-## Contributing
+```json
+"paths": {
+  "@wso2/oxygen-ui/*": ["./node_modules/@mui/material/*"]
+}
+```
 
-Want to report a bug, contribute some code, or improve the documentation?
+### vite.config.ts
 
-Excellent! Read up on our [guidelines for contributing](./CONTRIBUTING.md) to get started.
+Add the plugin to your Vite config:
+
+```ts
+import oxygenUIPlugin from '@wso2/vite-plugin-oxygen-ui';
+
+export default defineConfig({
+  plugins: [
+    oxygenUIPlugin()
+  ],
+})
+```
+
+# Build Instructions
+
+To build the project and all packages:
+
+```sh
+pnpm build
+```
+
+To run the sample app:
+
+```sh
+cd samples/oxygen-ui-test-app
+pnpm dev
+```
+
+# Project Structure
+
+The workspace is organized as follows:
+
+```
+oxygen-ui/
+├── packages/
+│   ├── oxygen-ui/                # Main Oxygen-UI component library
+│   ├── vite-plugin-oxygen-ui/    # Vite plugin for Oxygen-UI aliasing
+│   └── ...
+├── samples/
+│   └── oxygen-ui-test-app/       # Example Vite + React app using Oxygen-UI
+├── node_modules/
+├── README.md
+├── package.json
+└── ...
+```
 
 ## License
 
-Licenses this source under the Apache License, Version 2.0 [LICENSE](./LICENSE), You may not use this file except in compliance with the License.
+Licenses this source under the Apache License, Version 2.0 ([LICENSE](LICENSE)), You may not use this file except in compliance with the License.
+
+---
+
+(c) Copyright 2025 WSO2 LLC.
