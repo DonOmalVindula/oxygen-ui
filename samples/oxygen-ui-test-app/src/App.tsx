@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import { Badge, Button } from '@wso2/oxygen-ui'
+import { Badge, Button, Layout } from '@wso2/oxygen-ui'
 import ColorModeToggle from '@wso2/oxygen-ui/ColorModeToggle'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
@@ -28,28 +28,30 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React + Oxygen UI</h1>
-      <div className="card">
-        <p>
-          <Badge badgeContent={count} color="secondary">
-            <Button variant="contained" onClick={() => setCount((count) => count + 1)}>
-              Click to increase count 
-            </Button>
-          </Badge>
-          <br /><br />
+      <Layout.Content>
+        <div>
+          <a href="https://vite.dev" target="_blank">
+            <img src={viteLogo} className="logo" alt="Vite logo" />
+          </a>
+          <a href="https://react.dev" target="_blank">
+            <img src={reactLogo} className="logo react" alt="React logo" />
+          </a>
+        </div>
+        <h1>Vite + React + Oxygen UI</h1>
+        <div className="card">
+          <p>
+            <Badge badgeContent={count} color="secondary">
+              <Button variant="contained" onClick={() => setCount((count) => count + 1)}>
+                Click to increase count 
+              </Button>
+            </Badge>
+            <br /><br />
+          </p>
+        </div>
+        <p className="read-the-docs">
+          Click here to change color mode <ColorModeToggle />
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click here to change color mode <ColorModeToggle />
-      </p>
+      </Layout.Content>
     </>
   )
 }
